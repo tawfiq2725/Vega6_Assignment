@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Welcome Home, {{user.name}}!</h1>
+    <a href="/logout" class="btn btn-danger">Logout</a>
+  </div>
+
+  <h2>Blogs</h2>
+  <div class="row">
+    {{#each blogs}}
+      {{#if this.display}}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            {{#if this.image}}
+              <img src="/uploads/{{this.image}}" class="card-img-top" alt="{{this.title}}">
+            {{/if}}
+            <div class="card-body">
+              <h3 class="card-title">{{this.title}}</h3>
+              <p class="card-text">{{this.description}}</p>
+              <a href="/blogs/{{this._id}}" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="col-12">
+        <p class="text-muted">No blogs available.</p>
+      </div>
+    {{/each}}
+  </div>
+</div>

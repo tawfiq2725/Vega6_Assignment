@@ -1,0 +1,23 @@
+<style>
+.main{
+    width: 400px;
+    position: relative;
+    top: 100px;
+}
+</style>
+
+<div class="container main"> 
+    <h2>Login Page</h2>
+<form method="POST" action="/user-login">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<a href="/sign-up">No account click here</a>
+</div>

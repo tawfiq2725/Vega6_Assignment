@@ -1,0 +1,59 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Edit Blog</h1>
+  <form action="/blogs/edit/{{blog._id}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" name="title" id="title" class="form-control" value="{{blog.title}}" required>
+      <div class="invalid-feedback">
+        Please provide a blog title.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea name="description" id="description" class="form-control" rows="5" required>{{blog.description}}</textarea>
+      <div class="invalid-feedback">
+        Please provide a blog description.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Image:</label>
+      {{#if blog.image}}
+        <div class="mb-2">
+          <img src="/uploads/{{blog.image}}" alt="{{blog.title}}" class="img-thumbnail" width="150">
+        </div>
+      {{/if}}
+      <input type="file" name="image" id="image" class="form-control">
+      <div class="invalid-feedback">
+        Please upload a valid image file.
+      </div>
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" name="display" id="display" class="form-check-input" {{#if blog.display}}checked{{/if}}>
+      <label for="display" class="form-check-label">Display on Home Page:</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Blog</button>
+  </form>
+</div>
+
+<script>
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
